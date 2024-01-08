@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="Icones_Sistema">
+    <file>Imagens/Icons/play_icon.png</file>
+    <file>Imagens/Icons/estoque_icon.png</file>
+    <file>Imagens/Icons/fornecedor_icon.png</file>
+    <file>Imagens/Icons/adicionar_trabalho_icon.png</file>
+    <file>Imagens/Icons/cliente_icon.png</file>
+    <file>Imagens/Icons/nota_fiscal_icon.png</file>
+    <file>Imagens/Icons/cadastro_icon.png</file>
+    <file>Imagens/Icons/config_icon.png</file>
+    <file>Imagens/Icons/sair_icon.png</file>
+    <file>Imagens/Icons/estatua_icon.png</file>
+  </qresource>
+</RCC>
