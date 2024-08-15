@@ -551,7 +551,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         # Marca a variável _updating_funcionario como False após a atualização
         if getattr(self, 'updating_funcionario', False):
             setattr(self, 'updating_funcionario', False)
-            ID = self.tw_funcionario.selectedItems()[0].text(0)  # Assuming the ID is in the first column
+            ID = self.tw_funcionario.selectedItems()[0].text(0) 
             self.update_funcionario(ID, Nome, Usuario, Senha, Acesso)
 
         else:
@@ -600,25 +600,22 @@ class TelaADM(QMainWindow, Ui_MainWindow):
 
 
     def table_funcionario(self):
-        # Clear the existing items in the table
+
         self.tw_funcionario.clear()
 
-        # Create a database connection
         connection = sqlite3.connect("AutoCenter.db")
-        # Create a cursor object
+
         cursor = connection.cursor()
 
         # Pega as informações da tabela funcionário
         cursor.execute("SELECT * FROM funcionario")
         records = cursor.fetchall()
 
-        # Iterate over the records and add them to the tree widget
         for record in records:
             item = QTreeWidgetItem(self.tw_funcionario)
             for i in range(len(record)):
                 item.setText(i, str(record[i]))
 
-            # Create and set the delete button for the sixth column
             delete_button = QPushButton("Excluir")
             style = "QPushButton { " \
                     "background-color: rgb(41, 49, 83); " \
@@ -650,14 +647,12 @@ class TelaADM(QMainWindow, Ui_MainWindow):
             edit_button.clicked.connect(lambda: self.ApagarLabelErros())
             self.tw_funcionario.setItemWidget(item, 6, edit_button)  # Ajuste na posição
 
-        # Resize columns to their contents
-        self.tw_funcionario.resizeColumnToContents(0)  # Resize the first column for check states
-        for i in range(1, self.tw_cliente.columnCount()):  # Resize remaining columns
-            self.tw_funcionario.resizeColumnToContents(i)
+        # Resize nas colunas
+        self.tw_funcionario.resizeColumnToContents(0)  
+        for i in range(1, self.tw_cliente.columnCount()):  
             self.tw_funcionario.header().resizeSections(QtWidgets.QHeaderView.ResizeToContents)
             self.tw_funcionario.header().setSectionResizeMode(i, QtWidgets.QHeaderView.Fixed)
 
-        # Close the database connection
         connection.close()
 
 
@@ -713,7 +708,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
 
 
     def update_funcionario(self, ID, Nome, Usuario, Senha, Acesso):
-        # Update the funcionario in the database
+
         connection = sqlite3.connect("AutoCenter.db")
         cursor = connection.cursor()
         cursor.execute("""
@@ -738,7 +733,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         self.table_funcionario()
 
     def on_btn_salvar_funcionario_clicked(self):
-        # Get the values from the text boxes
+        
         Nome = self.txt_nome_usuario.text()
         Usuario = self.txt_usuario.text()
         Senha = self.txt_senha_usuario.text()
@@ -902,8 +897,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
 
         # Adicionar funcionários à combobox
         for cliente in clientes:
-            cpf_cliente, nome_cliente = cliente  # Assuming funcionario is a tuple with (ID, Nome)
-            # Add the name to the ComboBox and set its data to be the ID
+            cpf_cliente, nome_cliente = cliente  
             self.cmb_cliente.addItem(nome_cliente, userData=cpf_cliente)
             
 
@@ -936,8 +930,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
 
         # Adicionar funcionários à combobox
         for funcionario in funcionarios:
-            id_funcionario, nome_funcionario = funcionario  # Assuming funcionario is a tuple with (ID, Nome)
-            # Add the name to the ComboBox and set its data to be the ID
+            id_funcionario, nome_funcionario = funcionario  
             self.cmb_funcionario_responsavel.addItem(nome_funcionario, userData=id_funcionario) 
 
     def setup_connections_trabalhos_filtro(self):
@@ -954,10 +947,9 @@ class TelaADM(QMainWindow, Ui_MainWindow):
                 item.setHidden(True)
 
     def table_trabalho(self):
-        # Clear existing items in the QTreeWidget
+
         self.tw_trabalhos.clear()
 
-        # Connect to the database and execute the query
         cn = sqlite3.connect('AutoCenter.db')
         query = """
             SELECT t.id_trabalho, t.ID_funcionario, f.Nome AS nome_funcionario, 
@@ -1022,10 +1014,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
             self.tw_trabalhos.resizeColumnToContents(i)
 
     def table_trabalhos_geral(self):
-        # Clear existing items in the QTreeWidget
         self.tw_trabalhos_geral.clear()
-
-        # Connect to the database and execute the query
         cn = sqlite3.connect('AutoCenter.db')
         query = """
             SELECT t.id_trabalho, t.ID_funcionario, f.Nome AS nome_funcionario, 
@@ -1054,7 +1043,6 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         """
         result = pd.read_sql_query(query, cn)
 
-        # Clear the existing tree
         self.tw_trabalhos_realizados.clear()
 
         for index, row in result.iterrows():
@@ -1063,7 +1051,6 @@ class TelaADM(QMainWindow, Ui_MainWindow):
 
         self.tw_trabalhos_realizados.setSortingEnabled(False)
 
-        # Adjust the resizing of columns
         for i in range(self.tw_trabalhos_realizados.columnCount()):
             self.tw_trabalhos_realizados.resizeColumnToContents(i)
 
@@ -1160,7 +1147,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
 
 
     def update_trabalho(self, ID_funcionario, CPF_cliente, nome_trabalho, modelo_automovel, preco):
-        # Update the trabalho in the database
+        # Update do trabalho no database
         connection = sqlite3.connect("AutoCenter.db")
         cursor = connection.cursor()
         cursor.execute("""
@@ -1225,9 +1212,6 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         # Iterar sobre os itens na árvore
         for item_index in range(self.tw_trabalhos_realizados.topLevelItemCount()):
             item = self.tw_trabalhos_realizados.topLevelItem(item_index)
-            
-            # A coluna correspondente ao preço depende da sua estrutura, ajuste conforme necessário
-            # Aqui, assumimos que a coluna do preço é a sexta coluna (índice 5)
             preco_str = item.text(5)
 
             try:
@@ -1415,31 +1399,27 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         # Limpar a combobox antes de adicionar novos itens
         self.cmb_pecas.clear()
 
-        # Adicionar produtos à combobox
+       
         for produto in produtos:
-            descricao = produto[0]  # Substitua 'descricao' pelo nome correto da coluna no seu banco de dados
+            descricao = produto[0] 
             self.cmb_pecas.addItem(descricao)
  
     def table_cliente(self):
-        # Clear the existing items in the table
-        self.tw_cliente.clear()
 
-        # Create a database connection
+        self.tw_cliente.clear()
         connection = sqlite3.connect("AutoCenter.db")
-        # Create a cursor object
         cursor = connection.cursor()
 
         # Pega as informações da tabela cliente
         cursor.execute("SELECT CPF, Nome, Telefone, Dia_Agendamento, Peca_Requisitada, Chave_Notas FROM cliente ORDER BY CPF, Nome, Telefone, Peca_Requisitada, Chave_Notas, Dia_Agendamento")
         records = cursor.fetchall()
 
-        # Iterate over the records and add them to the tree widget
+        
         for record in records:
             item = QTreeWidgetItem(self.tw_cliente)
             for i in range(len(record)):
                 item.setText(i, str(record[i]))
 
-            # Create and set the delete button for the sixth column
             delete_button = QPushButton("Excluir")
             style = "QPushButton { " \
                     "background-color: rgb(41, 49, 83); " \
@@ -1472,8 +1452,8 @@ class TelaADM(QMainWindow, Ui_MainWindow):
             self.tw_cliente.setItemWidget(item, 7, edit_button)  # Ajuste na posição
 
         # Resize columns to their contents
-        self.tw_cliente.resizeColumnToContents(0)  # Resize the first column for check states
-        for i in range(1, self.tw_cliente.columnCount()):  # Resize remaining columns
+        self.tw_cliente.resizeColumnToContents(0)  
+        for i in range(1, self.tw_cliente.columnCount()): 
             self.tw_cliente.resizeColumnToContents(i)
             self.tw_cliente.header().resizeSections(QtWidgets.QHeaderView.ResizeToContents)
             self.tw_cliente.header().setSectionResizeMode(i, QtWidgets.QHeaderView.Fixed)
@@ -1488,7 +1468,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
     def filter_table(self, text):
         for row in range(self.tw_cliente.topLevelItemCount()):
             item = self.tw_cliente.topLevelItem(row)
-            nome_column_index = 1  # Substitua pelo índice da coluna "Nome"
+            nome_column_index = 1  
 
             if item.text(nome_column_index).lower().startswith(text.lower()):
                 item.setHidden(False)
@@ -1544,7 +1524,6 @@ class TelaADM(QMainWindow, Ui_MainWindow):
 
 
     def update_cliente(self, CPF, Nome, Telefone, Peca_Requisitada, Chave_Notas, Dia_Agendamento):
-        # Update the cliente in the database
         connection = sqlite3.connect("AutoCenter.db")
         cursor = connection.cursor()
         cursor.execute("""
@@ -1568,14 +1547,13 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         self.table_cliente()
 
     def on_btn_salvar_cliente_clicked(self):
-        # Get the values from the text boxes
         CPF = self.txt_cpf_cliente.text()
         Nome = self.txt_nome_cliente.text()
         Telefone = self.txt_telefone_cliente.text()
         Peca_Requisitada = self.cmb_pecas.currentText()
         Dia_Agendamento = self.date_cliente.text()
 
-        # Check if a cliente is selected
+
         selected_items = self.tw_cliente.selectedItems()
         print("Selected Items:", selected_items)
 
@@ -1620,7 +1598,6 @@ class TelaADM(QMainWindow, Ui_MainWindow):
             msg.exec_()
 
     def confirmar_delete_cliente(self, item, record):
-
         # Obter o CPF do cliente a ser excluído
         CPF = record[0]
 
@@ -1882,7 +1859,6 @@ class TelaADM(QMainWindow, Ui_MainWindow):
                 item.setHidden(True)
 
     def table_fornecedor(self):
-        # Clear the existing items in the table
         self.tw_fornecedor.clear()
 
         connection = sqlite3.connect("AutoCenter.db")
@@ -1931,8 +1907,8 @@ class TelaADM(QMainWindow, Ui_MainWindow):
             self.tw_fornecedor.setItemWidget(item, 4, edit_button)  # Ajuste para a nova posição da coluna
 
         # Resize columns to their contents
-        self.tw_fornecedor.resizeColumnToContents(0)  # Resize the first column for check states
-        for i in range(1, self.tw_cliente.columnCount()):  # Resize remaining columns
+        self.tw_fornecedor.resizeColumnToContents(0) 
+        for i in range(1, self.tw_cliente.columnCount()): 
             self.tw_cliente.resizeColumnToContents(i)
             self.tw_cliente.header().resizeSections(QtWidgets.QHeaderView.ResizeToContents)
             self.tw_cliente.header().setSectionResizeMode(i, QtWidgets.QHeaderView.Fixed)
@@ -2452,7 +2428,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         # Parte 1: Gerar o arquivo Excel diretamente do DataFrame
         cnx = sqlite3.connect('AutoCenter.db')
         result = pd.read_sql_query("SELECT * FROM Notas", cnx)
-        file_path = "C:/Users/cp/OneDrive/Área de Trabalho/SigmaAutocenter TCC/Notas.xlsx"  # Substitua pelo caminho completo do seu arquivo
+        file_path = "D:\Documentos\Downloads\SigmaAutocenter\ Notas.xlsx"  # Substitua pelo caminho completo do seu arquivo
         result.to_excel(file_path, sheet_name='Notas', index=False)
 
         # Parte 2: Aplicar estilização ao arquivo Excel gerado
@@ -2465,7 +2441,7 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         msg.setText("Relatório gerado com sucesso!")
 
         # Adicionar ícone à QMessageBox
-        icon_path = "C:/Users/cp/OneDrive/Área de Trabalho/SigmaAutocenter TCC/Imagens/excel.png"
+        icon_path = "D:\Documentos\Downloads\SigmaAutocenter\Imagens\excel.png"
         msg.setWindowIcon(QIcon(icon_path))
 
         msg.exec_()
@@ -4892,7 +4868,7 @@ class MainWindowUsuario(QMainWindow, Ui_MainWindowUsuario):
         # Parte 1: Gerar o arquivo Excel diretamente do DataFrame
         cnx = sqlite3.connect('AutoCenter.db')
         result = pd.read_sql_query("SELECT * FROM Notas", cnx)
-        file_path = "C:/Users/cp/OneDrive/Área de Trabalho/SigmaAutocenter TCC/Notas.xlsx"  # Substitua pelo caminho completo do seu arquivo
+        file_path = "D:\Documentos\Downloads\SigmaAutocenter\ Notas.xlsx"  # Substitua pelo caminho completo do seu arquivo
         result.to_excel(file_path, sheet_name='Notas', index=False)
 
         # Parte 2: Aplicar estilização ao arquivo Excel gerado
@@ -4905,7 +4881,7 @@ class MainWindowUsuario(QMainWindow, Ui_MainWindowUsuario):
         msg.setText("Relatório gerado com sucesso!")
 
         # Adicionar ícone à QMessageBox
-        icon_path = "C:/Users/cp/OneDrive/Área de Trabalho/SigmaAutocenter/Imagens/excel.png"
+        icon_path = "D:\Documentos\Downloads\SigmaAutocenter\Imagens\excel.png"
         msg.setWindowIcon(QIcon(icon_path))
 
         msg.exec_()
@@ -5015,14 +4991,12 @@ class MainWindowUsuario(QMainWindow, Ui_MainWindowUsuario):
         labels = "Estoque", "Saídas"
         sizes = [estoque, saida]
         fig1, axl = plt.subplots()
-        axl.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90)
+        axl.pie(sizes, labels=labels, autopct='%1.1555f%%', shadow=True, startangle=90)
         axl.axis("equal")
 
         plt.show()
 
     
-
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = Login()
