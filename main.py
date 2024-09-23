@@ -1134,7 +1134,6 @@ class TelaADM(QMainWindow, Ui_MainWindow):
 
             # Configurar a combobox do cliente
             if self.cmb_cliente.count() > 0:
-                # Utilizar o índice correto (4) para obter o nome do cliente
                 index = self.cmb_cliente.findText(trabalho[4])
                 if index != -1:
                     self.cmb_cliente.setCurrentIndex(index)
