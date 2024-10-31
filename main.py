@@ -2525,11 +2525,15 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         file_extension = os.path.splitext(filePath)[1]
 
         if file_extension == ".pdf":
+            # Configurar o caminho do Poppler a partir da raiz do projeto
+            project_root = os.path.dirname(os.path.abspath(__file__))
+            poppler_path = os.path.join(project_root, "poppler", "bin")
+
             printer = QPrinter(QPrinter.HighResolution)
             dialog = QPrintDialog(printer, self)
             if dialog.exec_() == QPrintDialog.Accepted:
                 with tempfile.TemporaryDirectory() as path:
-                    images = convert_from_path(filePath, dpi=300, output_folder=path, poppler_path=r'C:\Program Files\poppler-0.68.0\bin')
+                    images = convert_from_path(filePath, dpi=300, output_folder=path, poppler_path=poppler_path)
                     painter = QPainter()
                     painter.begin(printer)
                     for i, image in enumerate(images):
@@ -2540,8 +2544,6 @@ class TelaADM(QMainWindow, Ui_MainWindow):
                         qtImageScaled = qtImage.scaled(rect.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
                         painter.drawImage(rect, qtImageScaled)
                     painter.end()
-        else:
-            pass
 
     def graphic(self):
 
@@ -4970,11 +4972,15 @@ class MainWindowUsuario(QMainWindow, Ui_MainWindowUsuario):
         file_extension = os.path.splitext(filePath)[1]
 
         if file_extension == ".pdf":
+            # Configurar o caminho do Poppler a partir da raiz do projeto
+            project_root = os.path.dirname(os.path.abspath(__file__))
+            poppler_path = os.path.join(project_root, "poppler", "bin")
+
             printer = QPrinter(QPrinter.HighResolution)
             dialog = QPrintDialog(printer, self)
             if dialog.exec_() == QPrintDialog.Accepted:
                 with tempfile.TemporaryDirectory() as path:
-                    images = convert_from_path(filePath, dpi=300, output_folder=path, poppler_path=r'C:\Program Files\poppler-0.68.0\bin')
+                    images = convert_from_path(filePath, dpi=300, output_folder=path, poppler_path=poppler_path)
                     painter = QPainter()
                     painter.begin(printer)
                     for i, image in enumerate(images):
@@ -4985,8 +4991,6 @@ class MainWindowUsuario(QMainWindow, Ui_MainWindowUsuario):
                         qtImageScaled = qtImage.scaled(rect.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
                         painter.drawImage(rect, qtImageScaled)
                     painter.end()
-        else:
-            pass
 
     def graphic(self):
 
