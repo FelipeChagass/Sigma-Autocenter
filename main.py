@@ -2424,10 +2424,14 @@ class TelaADM(QMainWindow, Ui_MainWindow):
 
     
     def Converter_Excel(self):
-        # Parte 1: Gerar o arquivo Excel diretamente do DataFrame
         cnx = sqlite3.connect('AutoCenter.db')
         result = pd.read_sql_query("SELECT * FROM Notas", cnx)
-        file_path = "D:\Documentos\Downloads\SigmaAutocenter\ Notas.xlsx"  # Substitua pelo caminho completo do seu arquivo
+        
+        # Definir o caminho para a pasta raiz do projeto
+        project_root = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(project_root, "Notas.xlsx")
+        
+        # Salvar o arquivo Excel
         result.to_excel(file_path, sheet_name='Notas', index=False)
 
         # Parte 2: Aplicar estilização ao arquivo Excel gerado
@@ -2438,10 +2442,11 @@ class TelaADM(QMainWindow, Ui_MainWindow):
         msg.setIcon(QMessageBox.Information)
         msg.setWindowTitle("Notas em XML")
         msg.setText("Relatório gerado com sucesso!")
-
+        
         # Adicionar ícone à QMessageBox
-        icon_path = "D:\Documentos\Downloads\SigmaAutocenter\Imagens\excel.png"
+        icon_path = os.path.join(project_root, "Imagens", "excel.png")
         msg.setWindowIcon(QIcon(icon_path))
+
 
         msg.exec_()
 
@@ -4862,12 +4867,16 @@ class MainWindowUsuario(QMainWindow, Ui_MainWindowUsuario):
                 self.db.close_connection()
                 self.reset_table()
 
-    
+
     def Converter_Excel(self):
-        # Parte 1: Gerar o arquivo Excel diretamente do DataFrame
         cnx = sqlite3.connect('AutoCenter.db')
         result = pd.read_sql_query("SELECT * FROM Notas", cnx)
-        file_path = "D:\Documentos\Downloads\SigmaAutocenter\ Notas.xlsx"  # Substitua pelo caminho completo do seu arquivo
+        
+        # Definir o caminho para a pasta raiz do projeto
+        project_root = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(project_root, "Notas.xlsx")
+        
+        # Salvar o arquivo Excel
         result.to_excel(file_path, sheet_name='Notas', index=False)
 
         # Parte 2: Aplicar estilização ao arquivo Excel gerado
@@ -4878,16 +4887,17 @@ class MainWindowUsuario(QMainWindow, Ui_MainWindowUsuario):
         msg.setIcon(QMessageBox.Information)
         msg.setWindowTitle("Notas em XML")
         msg.setText("Relatório gerado com sucesso!")
-
+        
         # Adicionar ícone à QMessageBox
-        icon_path = "D:\Documentos\Downloads\SigmaAutocenter\Imagens\excel.png"
+        icon_path = os.path.join(project_root, "Imagens", "excel.png")
         msg.setWindowIcon(QIcon(icon_path))
+
 
         msg.exec_()
 
+
     def estilizar_tabela_excel(self, file_path):
         # Abrir o arquivo Excel
-        print("Iniciando estilização da tabela...")
         wb = load_workbook(file_path)
         ws = wb.active
 
