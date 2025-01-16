@@ -54,11 +54,8 @@ class Login(QMainWindow, Ui_Login):
         db.insert_admin()
         self.setWindowTitle("Login do Sistema") 
         self.btn_entrar.clicked.connect(self.checklogin)
-        #Se clicar no X do Popup, ele fecha
         self.pushButton_close_popup.clicked.connect(lambda: self.frame_erro.hide())
-        #Se clicar no botão, ele chama a função de checagem de campos
         self.btn_entrar.clicked.connect(self.checkFields)
-        #O frame se esconde hihi
         self.frame_erro.hide()
     
     #
