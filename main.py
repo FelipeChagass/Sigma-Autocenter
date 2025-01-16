@@ -1,10 +1,15 @@
+import sys
+import os
+import functools
+# PySide6
 from PySide6.QtWidgets import *
 from PySide6.QtGui import QIcon, QPainter, QKeyEvent
 from PySide6.QtCore import *
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtPrintSupport import QPrintDialog, QPrinter
 from PySide6.QtSql import QSqlDatabase, QSqlTableModel
-import functools
+
+# Bibliotecas de terceiros
 import pandas as pd
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import NamedStyle, PatternFill, Border, Side, Font, Alignment
@@ -12,16 +17,16 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.utils import get_column_letter
 import brazilcep
 from PIL.ImageQt import ImageQt
-import sys
-import sqlite3 
-import os
+import sqlite3
 import aspose.pdf as pdf
 from datetime import date
-import re 
+import re
 import random
 import tempfile
 from pdf2image import convert_from_path
 import matplotlib.pyplot as plt
+
+# Módulos locais
 from Login import Ui_Login
 from Layout_Sigma_Admin import Ui_MainWindow
 from Layout_Sigma_Usuario import Ui_MainWindowUsuario

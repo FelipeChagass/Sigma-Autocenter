@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'Layout_Sigma_Admin.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.0
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -22,7 +22,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QSizePolicy, QSpacerItem, QSplitter, QStackedWidget,
     QTabWidget, QTableView, QTreeWidget, QTreeWidgetItem,
     QVBoxLayout, QWidget)
-import Icones
+import Icones_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(1357, 720)
+        MainWindow.resize(1357, 859)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -64,7 +64,7 @@ class Ui_MainWindow(object):
         self.Top_menu.setObjectName(u"Top_menu")
         sizePolicy.setHeightForWidth(self.Top_menu.sizePolicy().hasHeightForWidth())
         self.Top_menu.setSizePolicy(sizePolicy)
-        self.Top_menu.setMaximumSize(QSize(16777215, 65))
+        self.Top_menu.setMaximumSize(QSize(16777215, 75))
         self.Top_menu.setStyleSheet(u"background-color: rgb(47, 82, 162);")
         self.Top_menu.setFrameShape(QFrame.NoFrame)
         self.Top_menu.setFrameShadow(QFrame.Raised)
@@ -100,15 +100,15 @@ class Ui_MainWindow(object):
 
         self.Frame_Botao_Menu = QFrame(self.Top_menu)
         self.Frame_Botao_Menu.setObjectName(u"Frame_Botao_Menu")
-        self.Frame_Botao_Menu.setMinimumSize(QSize(720, 0))
-        self.Frame_Botao_Menu.setMaximumSize(QSize(16777215, 16777215))
+        self.Frame_Botao_Menu.setMinimumSize(QSize(0, 0))
+        self.Frame_Botao_Menu.setMaximumSize(QSize(16777215, 800))
         self.Frame_Botao_Menu.setStyleSheet(u"	background-color: #181b30;")
         self.Frame_Botao_Menu.setFrameShape(QFrame.NoFrame)
         self.Frame_Botao_Menu.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.Frame_Botao_Menu)
         self.horizontalLayout_4.setSpacing(0)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(0, 10, 10, 10)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.Logo = QLabel(self.Frame_Botao_Menu)
         self.Logo.setObjectName(u"Logo")
         palette = QPalette()
@@ -180,9 +180,9 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush)
         self.Logo.setPalette(palette)
         font1 = QFont()
-        font1.setFamilies([u"MODERN WARFARE"])
-        font1.setPointSize(48)
-        font1.setBold(True)
+        font1.setFamilies([u"Modern Warfare"])
+        font1.setPointSize(42)
+        font1.setBold(False)
         self.Logo.setFont(font1)
         self.Logo.setAlignment(Qt.AlignCenter)
 
@@ -350,7 +350,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.btn_menu_fornecedores, 6, 0, 1, 2)
 
-        self.verticalSpacer = QSpacerItem(20, 100, QSizePolicy.Minimum, QSizePolicy.Preferred)
+        self.verticalSpacer = QSpacerItem(20, 80, QSizePolicy.Minimum, QSizePolicy.Preferred)
 
         self.gridLayout.addItem(self.verticalSpacer, 14, 0, 1, 1)
 
@@ -7079,7 +7079,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.Paginas.setCurrentIndex(2)
+        self.Paginas.setCurrentIndex(10)
         self.tabWidget.setCurrentIndex(0)
         self.btn_olho_senha.setDefault(False)
         self.tabWidget_trabalho.setCurrentIndex(0)
@@ -7303,7 +7303,7 @@ class Ui_MainWindow(object):
         self.btn_salvar_fornecedor.setText(QCoreApplication.translate("MainWindow", u"Salvar", None))
         self.btn_cancelar_fornecedor.setText(QCoreApplication.translate("MainWindow", u"Cancelar", None))
         self.lbl_email_fornecedor.setText(QCoreApplication.translate("MainWindow", u"E-mail*", None))
-        self.label_trabalho_disponivel.setText(QCoreApplication.translate("MainWindow", u"Trabalhos Dispon\u00edveis", None))
+        self.label_trabalho_disponivel.setText(QCoreApplication.translate("MainWindow", u"Trabalhos Disponiveis", None))
         ___qtreewidgetitem5 = self.tw_trabalhos.headerItem()
         ___qtreewidgetitem5.setText(9, QCoreApplication.translate("MainWindow", u"Excluir", None));
         ___qtreewidgetitem5.setText(8, QCoreApplication.translate("MainWindow", u"Editar", None));

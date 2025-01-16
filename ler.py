@@ -73,9 +73,20 @@ class Read_xml():
 
 
 if __name__ == "__main__":
-    xml  = Read_xml("C:\\Users\\cp\\Base do Layout TCC")
-    all = xml.all_files()
 
-    for i in all:
-        result = xml.nfe_data(i)
-    print (result)
+    # Obtém o diretório do script atual (base do projeto)
+    project_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Inicializa o leitor XML apontando para o diretório do projeto
+    xml = Read_xml(project_dir)
+
+    # Obtém todos os arquivos XML no diretório
+    all_files = xml.all_files()
+
+    results = []
+    for file in all_files:
+        try:
+            result = xml.nfe_data(file)
+            results.append(result)
+        except Exception as e:
+            print(f"Erro ao processar o arquivo {file}: {e}")
