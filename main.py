@@ -59,7 +59,7 @@ class Login(QMainWindow, Ui_Login):
         self.frame_erro.hide()
     
     #
-    #Estilos
+    #Estilo
     StyleLineEditOk = ("QLineEdit{\n"
 "    border: 2px solid rgb(45,45,45);\n"
 "    border-radius: 5px;\n"

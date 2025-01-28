@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="login_icons">
+    <file>Imagens/logo_definitiva.png</file>
+    <file>Imagens/homem_usuario.png</file>
+  </qresource>
+</RCC>

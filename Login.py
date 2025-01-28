@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'Login.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.0
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -18,6 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QLineEdit, QMainWindow, QPushButton, QSizePolicy,
     QVBoxLayout, QWidget)
+import Icones_rc
+import login_rc
 import Imagens
 
 class Ui_Login(object):
@@ -52,7 +54,7 @@ class Ui_Login(object):
         self.frame_erro.setObjectName(u"frame_erro")
         self.frame_erro.setMaximumSize(QSize(450, 16777215))
         self.frame_erro.setStyleSheet(u"background-color: rgb(47, 82, 162);\n"
-"border-radius: 58x")
+"border-radius: 58px;")
         self.frame_erro.setFrameShape(QFrame.StyledPanel)
         self.frame_erro.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.frame_erro)
@@ -102,14 +104,16 @@ class Ui_Login(object):
         self.Logo = QFrame(self.login)
         self.Logo.setObjectName(u"Logo")
         self.Logo.setGeometry(QRect(120, 20, 360, 154))
-        self.Logo.setStyleSheet(u"background-image: url(:/Logo/Imagens_TCC/Logo Definitiva.png);")
+        self.Logo.setStyleSheet(u"background-image: url(:/login_icons/Imagens/logo_definitiva.png);\n"
+"background-repeat: no-repeat;")
         self.Logo.setFrameShape(QFrame.StyledPanel)
         self.Logo.setFrameShadow(QFrame.Raised)
         self.Usuario = QFrame(self.login)
         self.Usuario.setObjectName(u"Usuario")
         self.Usuario.setGeometry(QRect(240, 200, 125, 125))
         self.Usuario.setStyleSheet(u"QFrame{\n"
-"background-image: url(:/Usuario/Imagens_TCC/homem-usuario.png);\n"
+"background-image: url(:/login_icons/Imagens/homem_usuario.png);\n"
+"background-repeat: no-repeat;\n"
 "border-radius: 60px;\n"
 "border: 5px solid rgb(105, 133, 192);\n"
 "}")
@@ -152,20 +156,20 @@ class Ui_Login(object):
         self.txt_senha_login.setEchoMode(QLineEdit.Password)
         self.btn_entrar = QPushButton(self.login)
         self.btn_entrar.setObjectName(u"btn_entrar")
-        self.btn_entrar.setGeometry(QRect(340, 490, 161, 41))
+        self.btn_entrar.setGeometry(QRect(160, 480, 281, 41))
         self.btn_entrar.setFont(font)
-        self.btn_entrar.setStyleSheet(u"QPushButton{\n"
-"	background-color: rgb(50,50,50);\n"
-"	border: 2px solid rgb (60,60,60);\n"
-"	border-radius: 5px;\n"
+        self.btn_entrar.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(47, 82, 162);\n"
+"    border: 2px solid rgb(60, 60, 60);\n"
+"    border-radius: 5px;\n"
 "}\n"
-"QPushButton: hover{\n"
-"	background-color: rgb(60,60,60);\n"
-"	border: 2px solid rgb (70,70,70);\n"
+"QPushButton:hover {\n"
+"    background-color:  rgb(57, 100, 190);\n"
+"    border: 2px solid rgb(70, 70, 70);\n"
 "}\n"
-"QPushButton:pressed{\n"
-"	background-color: rgb(105, 133, 192);\n"
-"	border: 2px solid rgb (110,65,216);\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(36, 64, 128);\n"
+"    border: 2px solid rgb(110, 65, 216);\n"
 "}")
 
         self.horizontalLayout.addWidget(self.login)

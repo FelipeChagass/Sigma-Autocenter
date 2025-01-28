@@ -89,7 +89,7 @@ color: rgb(200, 200, 200);
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(47, 82, 162);
-border-radius: 58x</string>
+border-radius: 58px;</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -192,7 +192,8 @@ QPushButton:pressed{
            </rect>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-image: url(:/Logo/Imagens_TCC/Logo Definitiva.png);</string>
+           <string notr="true">background-image: url(:/login_icons/Imagens/logo_definitiva.png);
+background-repeat: no-repeat;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -212,7 +213,8 @@ QPushButton:pressed{
           </property>
           <property name="styleSheet">
            <string notr="true">QFrame{
-background-image: url(:/Usuario/Imagens_TCC/homem-usuario.png);
+background-image: url(:/login_icons/Imagens/homem_usuario.png);
+background-repeat: no-repeat;
 border-radius: 60px;
 border: 5px solid rgb(105, 133, 192);
 }</string>
@@ -305,9 +307,9 @@ QLineEdit{
          <widget class="QPushButton" name="btn_entrar">
           <property name="geometry">
            <rect>
-            <x>340</x>
-            <y>490</y>
-            <width>161</width>
+            <x>160</x>
+            <y>480</y>
+            <width>281</width>
             <height>41</height>
            </rect>
           </property>
@@ -317,18 +319,18 @@ QLineEdit{
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton{
-	background-color: rgb(50,50,50);
-	border: 2px solid rgb (60,60,60);
-	border-radius: 5px;
+           <string notr="true">QPushButton {
+    background-color: rgb(47, 82, 162);
+    border: 2px solid rgb(60, 60, 60);
+    border-radius: 5px;
 }
-QPushButton: hover{
-	background-color: rgb(60,60,60);
-	border: 2px solid rgb (70,70,70);
+QPushButton:hover {
+    background-color:  rgb(57, 100, 190);
+    border: 2px solid rgb(70, 70, 70);
 }
-QPushButton:pressed{
-	background-color: rgb(105, 133, 192);
-	border: 2px solid rgb (110,65,216);
+QPushButton:pressed {
+    background-color: rgb(36, 64, 128);
+    border: 2px solid rgb(110, 65, 216);
 }</string>
           </property>
           <property name="text">
@@ -384,7 +386,8 @@ QPushButton:pressed{
   </widget>
  </widget>
  <resources>
-  <include location="Imagens.qrc"/>
+  <include location="Icones.qrc"/>
+  <include location="login.qrc"/>
  </resources>
  <connections/>
 </ui>
