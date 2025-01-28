@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QLineEdit, QMainWindow, QPushButton, QSizePolicy,
     QVBoxLayout, QWidget)
-import Icones_rc
-import login_rc
+import Icones_qrc
+import login_qrc
 import Imagens
 
 class Ui_Login(object):
